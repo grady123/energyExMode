@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta content="telephone=no" name="format-detection" />
+	<meta name="imagemode" content="force" />
+	<meta name="wap-font-scale" content="no">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<script type="text/javascript" src="./js/minjs/echarts.common.min.js"></script>
+	<script src="./js/minjs/swiper.min.js" charset="utf-8"></script>
+	<script>
+		function rem(n) {
+			var r = document.documentElement.clientWidth;
+			document.documentElement.style.fontSize = (r * 100 / (375 * n)) + 'px';
+		}
+		rem(2);
+		/*按375标准，如果设计稿是750，那么倍率是2,测量是20px,那么写样式时就写2rem*/
+	</script>
+	<title>index</title>
+	<link rel="stylesheet" type="text/css" href="css/all_layout.css">
+	<link rel="stylesheet" href="css/plugins/swiper.min.css">
+</head>
+
+<body>
+	<div id="data-warp">
+		<div class="body-data" id="energyExindex"></div>
+		<div class="body-data" id="energyExclass"></div>
+		<div id="unit_three" class="body-data"></div>
+		<div id="unit_four" class="body-data"></div>
+		<!-- 项目选择器  -->
+		<div class="body-data" id="projectSelect"></div>
+	</div>
+	<!--loading及提示的dom-->
+	<div class="all-bom-warp" id="all-bom-warp">
+		<div class="loading" id="loading">
+			<div class="spinner">
+				<div class="spinner-container container1">
+					<div class="circle1"></div>
+					<div class="circle2"></div>
+					<div class="circle3"></div>
+					<div class="circle4"></div>
+				</div>
+				<div class="spinner-container container2">
+					<div class="circle1"></div>
+					<div class="circle2"></div>
+					<div class="circle3"></div>
+					<div class="circle4"></div>
+				</div>
+				<div class="spinner-container container3">
+					<div class="circle1"></div>
+					<div class="circle2"></div>
+					<div class="circle3"></div>
+					<div class="circle4"></div>
+				</div>
+			</div>
+		</div>
+		<div class="vue-bomb-warp" id="vue-bom-warp">
+			<div id="all-loading-tip" class="all-loading-tip">{{tip}}
+			</div>
+			<div class="bom-selec-tip-warp" id="bom-selec-tip-warp">
+				<div class="bom-postion">
+					<div class="bom-selec-tip">{{selecTip}}</div>
+					<div class="bom-selec-button"><span v-on:click="cc()">取消</span><span v-on:click="cf(this)">确定</span></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</body>
+<script type="text/javascript" src="./js/minjs/Zepto.js"></script>
+<script type="text/javascript" src="./js/minjs/vue.min.js"></script>
+<script type="text/javascript" src="./js/minjs/walden.js"></script>
+<!-- build:js js/concatjs/default.js-->
+<script type="text/javascript" src="./js/concatjs/a/global.js"></script>
+<script type="text/javascript" src="./js/concatjs/index/energyExindex.js"></script>
+<script type="text/javascript" src="./js/concatjs/index/energyExclass.js"></script>
+<script type="text/javascript" src="./js/concatjs/index/unit_three.js"></script>
+<script type="text/javascript" src="./js/concatjs/index/unit_four.js"></script>
+<script type="text/javascript" src="./js/minjs/moment-with-locales.js"></script>
+<script type="text/javascript" src="./js/concatjs/index/projectSelect.js"></script>
+<script>
+  Vue.filter('Num',function(str,v){
+    if(str==0){
+      return '0.00'
+    }
+    v=v||3;
+    if(str==null){
+      return
+    }
+    str=str.toString();
+    var newStr = "";
+    var count = 0;
+
+    if(str.indexOf(".")==-1){
+      for(var i=str.length-1;i>=0;i--){
+        if(count % 3 == 0 && count != 0){
+          newStr = str.charAt(i) + "," + newStr;
+        }else{
+          newStr = str.charAt(i) + newStr;
+        }
+        count++;
+      }
+//      str = newStr + ".00"; //自动补小数点后两位
+      str = newStr; //自动补小数点后两位
+      return str;
+    }
+    else
+    {
+      for(var i = str.indexOf(".")-1;i>=0;i--){
+        if(count % 3 == 0 && count != 0){
+          newStr = str.charAt(i) + "," + newStr;
+        }else{
+          newStr = str.charAt(i) + newStr; //逐个字符相接起来
+        }
+        count++;
+      }
+//      str = newStr + (str + "00").substr((str + "00").indexOf("."),3);
+      str = newStr + (str + "").substr((str + "").indexOf("."),v);
+      return str;
+    }
+  });
+  Vue.filter('money',function(v){
+    v=(v/10000).toFixed(2);
+      return v;
+  });
+  Vue.filter('null',function(v){
+   if(v==null||v==''||v==0||v=='0'){
+     return '0.0';
+   }else{
+     return v;
+   }
+  });
+  Vue.filter('one',function(v){
+    v=v-0;
+    v=v.toFixed(1);
+    return v;
+  });
+  Vue.filter('zero',function(v){
+    v=v+1;
+    return v;
+  });
+</script>
+<!-- endbuild -->
+
+</html>

@@ -1,0 +1,116 @@
+<div class="fixed-warp" id="entryClass">
+    <!--头-->
+    <div class="fixed-top">
+        <div class="fixed-top">
+            <div class="mobile-top-nag">
+                <div class="nag-button"><i class="iconfont icon-fanhui go1" v-on:click="goBack"></i><a href="/index"><i  class="iconfont icon-guanbi " id="unitFourGo2"></i></a></div>
+                {{nowProjectName.name}}</div>
+        </div>
+    </div>
+    <div class="fixed">
+        <!-- 分类 -->
+        <div class="top-nav">
+            <div class="button" :class="isActive('all')" v-on:click="changeFormatType('all',classDate)"><span>全部</span></div>
+            <div class="button" :class="isActive('undertaketype_1')" v-on:click="changeFormatType('undertaketype_1',classDate)"><span>物业承担</span></div>
+            <div class="button" :class="isActive('undertaketype_2')" v-on:click="changeFormatType('undertaketype_2',classDate)"><span>共有承担</span></div>
+            <div class="button" :class="isActive('undertaketype_3')" v-on:click="changeFormatType('undertaketype_3',classDate)"><span>公共水电</span></div>
+        </div>
+        <div class="energy-head">
+            <div class="bc-29b375 pt15 pb15 energy-head">
+                <div class="clearfix">
+                    <ul class="fr">
+                        <li class="fl" v-on:click="selChange"><span class="light fs28 mr10 datename textoverhide">{{nowProjectName.name}}</span><i class=" iconfont icon-iconfontunfold light mr140"></i></li>
+                        <li class="fl"><span class="light fs28 datename">{{info.date[1] - 0}}月{{info.date[2] -0}}日</span></li>
+                    </ul>
+                </div>
+                <div class="clearfix midle mt96">
+                    <ul class="fr pr">
+                        <li class="fl">
+                            <ul class="clearfix">
+                                <li class="fl fs big-number light"><span class="mr10">{{info.totlaPay}}</span><span class="fs32 mr30">万元</span><span class="fs26">实际支出</span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clearfix bc-29b375 two-tabs">
+                <ul class="W100 clearfix midle-tabs bt3BBA80">
+                    <li class="fl W-33 text-center pt10">
+                        <p class="fs32 light text-center top-p mb0">{{info.totlaPredict}}</p>
+                        <p class="fs24 c-d8ffed text-center top-b mb0">预算（万元）</p>
+                    </li>
+                    <li class="fl W-33 text-center pt10">
+                        <p class="fs32 light text-center top-p mb0">{{info.totlaPay}}</p>
+                        <p class="fs24 c-d8ffed text-center top-b mb0">实际支出（万元）</p>
+                    </li>
+                    <li class="fl W-33 text-center pt10 b0">
+                        <p class="fs32 light text-center top-p mb0">{{info.usePersent}}</p>
+                        <p class="fs24 c-d8ffed text-center top-b mb0">使用率（%）</p>
+                    </li>
+                </ul>
+            </div>
+            <div v-show="tableType !== 'month'" class="time-dimension clearfix list p40 mb0 light-bg">
+                <div class="fl W-50 b0" v-on:click="changeFormatType(classType,'nowMonth')"><span class="tab fs26" :class="dateActive('nowMonth')">本月</span></div>
+                <div class="fl W-50 b0" v-on:click="changeFormatType(classType,'nowYear')"><span class="tab fs26" :class="dateActive('nowYear')">本年</span></div>
+            </div>
+
+            <!-- 折线图 -->
+            <div class="charts" id="eneryClassCharts"></div>
+            <!-- 表格2  -->
+
+            <div v-show="tableType == 'unity'" class="clearfix  pt30  pb20 mb0 light-bg text-center bbDDDEE3">
+                <div class="fl W-20 b0 fs26 ">排名<i iconfont class="ion-arrow-down-c ml10 c-3395FF fs26"></i></div>
+                <div class="fl W-20 b0 fs26 ">{{orgLevel == 1? '集团' : orgLevel == 3? '公司':orgLevel == 4?'项目':'组织'}}</div>
+                <div class="fl W-20 b0 fs26 " v-bind:class="typeActive('predict')" v-on:click="loadData(unitId.id,'predict')">预算 <i v-bind:class="sortActive('predict')" class="iconfont"></i></div>
+                <div class="fl W-20 b0 fs26 " v-bind:class="typeActive('actual')" v-on:click="loadData(unitId.id,'actual')">实际 <i v-bind:class="sortActive('actual')" class="iconfont"></i></div>
+                <div class="fl W-20 b0 fs26 " v-bind:class="typeActive('persent')" v-on:click="loadData(unitId.id,'persent')">使用率<i v-bind:class="sortActive('persent')" class="iconfont"></i></div>
+            </div>
+            <ul v-show="tableType == 'unity'">
+                <li v-for="(d,index) in dataUnity" class=" h70 lh70 text-center bt0 bl0 br0 bbDDDEE3 m0">
+                    <div class="fl lh70 W-20 fs26">{{index+1}}</div>
+                    <div class="fl lh70 W-20 fs26 c-3395FF textoverhide" v-on:click="toUnit(d.orgId,d.orgName,d.orgLevel)">{{d.orgName}}</div>
+                    <div class="fl lh70 W-20 fs26">{{d.predict}}</div>
+                    <div class="fl lh70 W-20 fs26">{{d.pay}}</div>
+                    <div class="fl lh70 W-20 fs26">{{d.usePersent}}%</div>
+                </li>
+            </ul>
+            <div v-show="tableType =='month' " class="clearfix  pt30  pb20 mb0 light-bg text-center bbDDDEE3">
+                <div class="fl W-25 b0 fs26 ">月份<i iconfont class="ion-arrow-down-c ml10 c-3395FF fs26"></i></div>
+                <div class="fl W-25 b0 fs26 ">预算 <i class="iconfont"></i></div>
+                <div class="fl W-25 b0 fs26 ">实际 <i class="iconfont"></i></div>
+                <div class="fl W-25 b0 fs26 ">使用率<i class="iconfont"></i></div>
+            </div>
+            <ul v-show="tableType =='month' ">
+                <li v-for="(d,index) in dataMonth" class=" h70 lh70 text-center bt0 bl0 br0 bbDDDEE3 m0">
+                    <div class="fl lh70 W-25 fs26 c-3395FF">{{d.month}}月</div>
+                    <div class="fl lh70 W-25 fs26">{{d.predict}}</div>
+                    <div class="fl lh70 W-25 fs26">{{d.pay}}</div>
+                    <div class="fl lh70 W-25 fs26">{{d.usePersent}}%</div>
+                </li>
+            </ul>
+            <div v-show="tableType =='type' " class="clearfix  pt30  pb20 mb0 light-bg text-center bbDDDEE3">
+                <div class="fl W-25 b0 fs26 ">类型<i iconfont class="ion-arrow-down-c ml10 c-3395FF fs26"></i></div>
+                <div class="fl W-25 b0 fs26 ">预算 <i class="iconfont"></i></div>
+                <div class="fl W-25 b0 fs26 ">实际 <i class="iconfont"></i></div>
+                <div class="fl W-25 b0 fs26 ">使用率<i class="iconfont"></i></div>
+            </div>
+            <ul v-show="tableType =='type' ">
+                <li v-for="(d,index) in dataType" class=" h70 lh70 text-center bt0 bl0 br0 bbDDDEE3 m0">
+                    <div class="fl lh70 W-25 fs26 c-3395FF" v-on:click="goToType(d.type)">{{d.type == 'payType_1' ||d.type == 'paytype_1'? '水费': d.type == 'payType_2'|| d.type == 'paytype_2'? '电费':'其他'}}</div>
+                    <div class="fl lh70 W-25 fs26 ">{{d.predict}}</div>
+                    <div class="fl lh70 W-25 fs26 ">{{d.pay}}</div>
+                    <div class="fl lh70 W-25 fs26 ">{{d.usePersent}}%</div>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <div class="fixed-bottom">
+        <!-- 底部  -->
+        <div class="bot-nav">
+            <div v-if="orgLevel.leve != 4" v-on:click="changeTableType('unity')" class="button" :class="byTypeActive('unity')"><i class="iconfont icon-xuanfutubiao-zuzhi"></i>组织</div>
+            <div v-on:click="changeTableType('month')" class="button" :class="{'active': tableType == 'month','orglive4' :orgLevel.leve == 4}"><i class="iconfont icon-shijian"></i>时间</div>
+            <div v-on:click="changeTableType('type')" class="button" :class="{'active': tableType == 'type','orglive4' :orgLevel.leve == 4}"><i class="iconfont icon-yewu"></i>业务</div>
+        </div>
+    </div>
+</div>

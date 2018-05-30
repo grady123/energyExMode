@@ -1,0 +1,104 @@
+
+<div class="fixed-warp unit_three unit_four" id="unitFour">
+    <!--头-->
+    <div class="fixed-top">
+        <div class="fixed-top">
+            <div class="mobile-top-nag">
+                <div class="nag-button"><i class="iconfont icon-fanhui " id="unitFourGo" ></i><a href="/index"><i  class="iconfont icon-guanbi " id="unitFourGo2"></i></a></div>
+                {{meterName}}</div>
+        </div>
+    </div>
+    <div class="fixed">
+        <!-- 分类 -->
+        <div class="top-nav"  style="border-top: 1px solid #ADADAD">
+            <div class="button W-50" :class="{'active':estimatePractical==0}" @click="estimateExchange(0)"><span>预估</span></div>
+            <div class="button W-50" :class="{'active':estimatePractical==1}" @click="estimateExchange(1)"><span>实际</span></div>
+        </div>
+        <!-- 表格2  -->
+        <div class="energy-head "  >
+            <div class="unit" >
+                <div class="bc-29b375 pt15 pb15 energy-head">
+                    <div class="clearfix">
+                        <ul class="fr">
+                            <li class="fl" style="margin-right:1.2rem"><span class="light fs28 mr10 datename max_with" @click="" v-text="name" ></span></li>
+                            <li class="fl"><span class="light fs28 datename" >{{info.time[1]-0+'月'}}{{info.time[2]-0+'日'}}</span></li>
+                        </ul>
+                    </div>
+                    <div class="clearfix midle mt96">
+                        <ul class="fr pr">
+                            <li class="fl">
+                                <ul class="clearfix">
+                                    <li class="fl fs big-number light"><span class="mr10" v-text="info.total"></span><span class="fs32 mr15" style="font-size: 0.4rem!important;">{{unitThtree2}}</span><span class="fs26" style="font-size: 0.2rem!important;">本年累计用量</span></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="clearfix bc-29b375 two-tabs" >
+                    <ul class="W100 clearfix midle-tabs bt3BBA80">
+                        <li class="fl W-50 text-center pt10">
+                            <p class="fs32 light text-center top-p mb0" >{{info.lastTotal|Num}}</p>
+                            <p class="fs24 c-d8ffed text-center top-b mb0">上一年累计用量（{{unitThtree}}）</p>
+                        </li>
+                        <li class="fl  text-center pt10 b0"style="width: 49%">
+                            <p class="fs32 light text-center top-p mb0">{{info.compare|one}}%</p>
+                            <p class="fs24 c-d8ffed text-center top-b mb0">同比（%）</p>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class=" unit time-dimension unit_four" >
+            <!-- Swiper -->
+            <div class=" swiper-container  " id="unitSwperTwoNnit_four" style="height: auto!important;">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" style="height: 7rem;">
+
+                        <div class="identifying_three">
+                            <div><span class=" green"></span>本年度各月用量</div>
+                            <div><span class="blue"></span>上一年度各月用量</div>
+                        </div>
+                        <!--图表-->
+                        <div class="charts unit_chats charts1" id="waterElectricityEcharts"></div>
+
+
+                    </div>
+                    <div class="swiper-slide" >
+                        <ul class="clearFix">
+                            <li>
+                                <div class="clearfix  pt20  pb20 mb0  text-center bbDDDEE3">
+                                    <div class="fl W-10 b0 c-000 lh36 fs26">月份</div>
+                                    <div class="fl W-25 b0 c-000 lh36 fs26">当月用量({{unitThtree}})</div>
+                                    <div class="fl W-25 b0 c-000 lh36 fs26">上年同月({{unitThtree}})</div>
+                                    <div class="fl W-20 b0 c-000 lh36 fs26">同比</div>
+                                    <div class="fl W-20 b0 c-000 lh36 fs26">环比</div>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class=" clearfix text-center compare pt15 pb15 bbDDDEE3"  v-for="(item,index) in listdata.list">
+                                            <div class="fl W-10 fs22 c-777 h22"   v-text="item.monthNo"></div>
+                                            <div class="fl W-25 fs22 c-777 h22"  >{{item.dosage|Num}}</div>
+                                            <div class="fl W-25 fs22 c-6DC h22"  >{{item.lastDosage|Num}}</div>
+                                            <div class="fl W-20 fs22 c-777 h22"  :class="{'active':item.together>0}" >{{item.together|null}}%</div>
+                                            <div class="fl W-20 fs22 c-777 h22"  :class="{'active':item.loop>0}" >{{item.loop|null}}%</div>
+                                        </div>
+                                    </li>
+                                    <li class="h10"></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination" id="unitPaginationWTwoNnit_four"></div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

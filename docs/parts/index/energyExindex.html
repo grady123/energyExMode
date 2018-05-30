@@ -1,0 +1,94 @@
+<div class="fixed-warp" id="entryBody" style="display:none">
+    <!--头-->
+        <div class="fixed-top">
+            <div class="mobile-top-nag">
+                <div class="nag-button"><a href="/index/index.html"><i class="iconfont icon-fanhui go1" v-on:click="goBack"></i><a><a href="/index"><i  class="iconfont icon-guanbi " id="unitFourGo2"></i></a></div>
+                {{nowProjectName.name}}</div>
+        </div>
+    <div class="fixed" v-slinding>
+        <!-- 分类 -->
+        <div class="top-nav">
+            <div class="button" :class="isActive('all')" v-on:click="changeFormatType('all')"><span>全部</span></div>
+            <div class="button" :class="isActive('undertaketype_1')" v-on:click="changeFormatType('undertaketype_1')"><span>物业承担</span></div>
+            <div class="button" :class="isActive('undertaketype_2')" v-on:click="changeFormatType('undertaketype_2')"><span>共有承担</span></div>
+            <div class="button" :class="isActive('undertaketype_3')" v-on:click="changeFormatType('undertaketype_3')"><span>公共水电</span></div>
+        </div>
+        <div class="energy-analy">
+            <div class="bc-29b375 pt30 pb30">
+                <div class="clearfix">
+                    <ul class="fr">
+                        <li class="fl"><span v-on:click="selChange" class="light fs28 mr10 datename textoverhide">{{nowProjectName.name}}</span><i v-on:click="selChange" class="iconfont icon-iconfontunfold light mr140"></i></li>
+                        <li class="fl"><span class="light fs28 datename">{{info.date[1] - 0 || ''}}月{{info.date[2] -0 || ''}}日</span></li>
+                    </ul>
+                </div>
+                <!-- <div class="clearfix mt60">
+                    <ul class="fr" v-if="info.totlaPay < info.totlaPredict">
+                        <li class="fl"><i class="iconfont icon-xiangxiajiantou light mr12 c-fff600"></i></li>
+                        <li class="fl"><span class="light fs24 c-fff600 datename">低于上一年度</span></li>
+                    </ul>
+                    <ul class="fr" v-else-if="info.totlaPay > info.totlaPredict">
+                        <li class="fl"><i class="iconfont icon-jiantou light mr12 c-fff600"></i></li>
+                        <li class="fl"><span class="light fs24 c-fff600 datename">高于上一年度</span></li>
+                    </ul>
+                    <ul class="fr" v-else-if="info.totlaPay == info.totlaPredict">
+                        <li class="fl"><i class="iconfont light mr12 c-fff600"></i></li>
+                        <li class="fl"><span class="light fs24 c-fff600 datename"></span></li>
+                    </ul>
+                </div> -->
+                <div class="clearfix midle mt10">
+                    <ul class="fr pr">
+                        <li class="fl word"><span class="light fs28">使用率</span></li>
+                        <li class="fl">
+                            <ul class="clearfix">
+                                <li class="fl fs big-number light">{{info.compareToLast[0]}}.</li>
+                                <li class="fl">
+                                    <div>
+                                        <p class="percentage mb0 light">%</p>
+                                        <p class="decimal light mb0">{{info.compareToLast[1] || 0}}</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="clearfix bottom mt10">
+                    <ul class="fr">
+                        <li><span class="light fs24">本年预算（万元）</span><span class="fr light fs24">{{info.totlaPredict}}</span></li>
+                        <li><span class="light fs24">本年实际（万元）</span><span class="fr light fs24">{{info.totlaPay}}</span></li>
+                        <li><span class="light fs24">实际支出与上年比率(%)</span><span class="fr light fs24">{{info.usePersent}}</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- 折线图 -->
+        <div class="swiper-container" style="float:left;width:100%;">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="charts" id="indexCharts"></div>
+                </div>
+                <!-- 表格2  -->
+                <div class="swiper-slide">
+                    <div class="energy-head">
+                        <div class="clearfix  pt30  pb20 mb0 light-bg text-center bbDDDEE3">
+                            <div class="fl W-20 b0 c-000 fs26">月份<i class="ion-arrow-down-c ml10 c-3395FF fs26"></i></div>
+                            <div class="fl W-20 b0 c-000 fs26">本年当月</div>
+                            <div class="fl W-20 b0 c-000 fs26">上年当月</div>
+                            <div class="fl W-20 b0 c-000 fs26">同比</div>
+                            <div class="fl W-20 b0 c-000 fs26">环比</div>
+                        </div>
+                        <ul>
+                            <li v-for="(d,index) in data" class=" h70 lh70 text-center bt0 bl0 br0 bbDDDEE3 m0">
+                                <div class="fl lh70 W-20 fs26">{{index + 1}}月</div>
+                                <div class="fl lh70 W-20 fs26">{{d.pay}}</div>
+                                <div class="fl lh70 W-20 fs26 col-green">{{d.lastPay}}</div>
+                                <div class="fl lh70 W-20 fs26" :class="{'col-red' : d.YOY > 0}">{{d.YOY}}%</div>
+                                <div class="fl lh70 W-20 fs26" :class="{'col-red' : d.chain> 0}">{{d.chain}}%</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-pagination" style="position:fixed;bottom:0;margin:0.2rem auto;"></div>
+        </div>
+    </div>
+</div>

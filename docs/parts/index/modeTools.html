@@ -1,0 +1,118 @@
+<div class="fixed-warp" id="modeBody">
+    <!--头-->
+<div class="fixed-top">
+    <div class="fixed-top">
+        <div class="mobile-top-nag">
+            <div class="nag-button"><i class="iconfont icon-fanhui go1" ></i><i  class="iconfont icon-guanbi go1"></i></div>
+            能耗单方成本</div>
+    </div>
+</div>
+<div class="fixed">
+<!-- 分类 -->
+<div class="top-nav" v-if="one">
+    <div class="button active"><span>全部</span></div>
+    <div class="button"><span>物业承担</span></div>
+    <div class="button"><span>共有承担</span></div>
+    <div class="button"><span>公共水电</span></div>
+</div>
+<!-- 地区项目选择  -->
+<div class="item-select" v-if="one">
+    <ul>
+        <li>
+            <div class="item-cont item-active">目前公司 <i class="iconfont icon-danxuankuangxuanzhong"></i></div>
+        </li>
+        <li class="li-item">
+            <div class="item-cont">上海分公司 <i v-bind:class="selShow" class="iconfont" v-on:click="change"></i></div>
+            <div class="item-class" v-if="isHide">
+                <p>项目1</p>
+                <p>项目2</p>
+                <p>项目3</p>
+            </div>
+        </li>
+    </ul>
+</div>
+<!-- 总表  -->
+<div class="energy-analy" v-if="one">
+    <div class="bc-29b375 pt30 pb30">
+        <div class="clearfix">
+            <ul class="fr">
+                <li class="fl"><span class="light fs28 mr10 datename">新城物业</span><i class="iconfont icon-iconfontunfold light mr140"></i></li>
+                <li class="fl"><span class="light fs28 datename">9月12日</span></li>
+            </ul>
+        </div>
+        <div class="clearfix mt60">
+            <ul class="fr">
+                <li class="fl"><i class="ion-arrow-down-a light mr12 c-fff600"></i></li>
+                <li class="fl"><span class="light fs24 c-fff600 datename">低于上一年度</span></li>
+            </ul>
+        </div>
+        <div class="clearfix midle mt10">
+            <ul class="fr pr">
+                <li class="fl word"><span class="light fs28">实际支出</span></li>
+                <li class="fl">
+                    <ul class="clearfix">
+                        <li class="fl fs big-number light">20.</li>
+                        <li class="fl">
+                            <div>
+                                <p class="percentage mb0 light">%</p>
+                                <p class="decimal light mb0">5</p>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="clearfix bottom mt10">
+            <ul class="fr">
+                <li><span class="light fs24">本年预算（万元）</span><span class="fr light fs24">640</span></li>
+                <li><span class="light fs24">本年实际（万元）</span><span class="fr light fs24">640</span></li>
+                <li><span class="light fs24">使用率(%)</span><span class="fr light fs24">78%</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="banner">
+        <ul class="clearFix">
+            <li>
+                <div class="clearfix  pt20  pb20 mb0  text-center bbDDDEE3">
+                    <div class="fl W-20 b0 c-000 lh36 fs26">月份</div>
+                    <div class="fl W-20 b0 c-000 lh36 fs26">本年当月</div>
+                    <div class="fl W-20 b0 c-000 lh36 fs26">上年当月</div>
+                    <div class="fl W-20 b0 c-000 lh36 fs26">同比</div>
+                    <div class="fl W-20 b0 c-000 lh36 fs26">环比</div>
+                </div>
+                <ul>
+                    <li>
+                        <div class=" clearfix text-center pt10 pb10 bbDDDEE3">
+                            <div class="fl W-20 fs22 c-777">1月</div>
+                            <div class="fl W-20 fs22 c-777">0.4000</div>
+                            <div class="fl W-20 fs22 c-6DC">0.4500</div>
+                            <div class="fl W-20 fs22 c-777">-11.1%</div>
+                            <div class="fl W-20 fs22 c-777">-1</div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <div></div>
+            </li>
+        </ul>
+        <ul>
+            <li class="active"></li>
+            <li></li>
+        </ul>
+    </div>
+</div>
+<!-- 表格2  -->
+
+<div class="charts" id="eneryClassCharts">
+</div>
+<div class="fixed-bottom">
+    <!-- 底部  -->
+    <div class="bot-nav" >
+        <div class="button"><i class="iconfont icon-xuanfutubiao-zuzhi"></i>组织</div>
+        <div class="button"><i class="iconfont icon-shijian"></i>时间</div>
+        <div class="button active"><i class="iconfont icon-yewu"></i>业务</div>
+    </div>
+</div>
+</div>
+</div>

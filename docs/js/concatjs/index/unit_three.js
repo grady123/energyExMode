@@ -59,7 +59,7 @@
 			//获取主页数据
 			getData:function(){
 				var that = this._data;
-				T.MyGet('/nets-platform-energy-api/dosage_analyze/meter_dosage_by_unit_id',function(res){
+				T.MyGet('api/meter_dosage_by_unit_id.json',function(res){
 					if(res.status==0){
 						that.data=res;
 						indexVue.$nextTick(function(that){

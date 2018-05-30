@@ -4,7 +4,7 @@
 	var ID={userId:'6605'};
 	T.AutoLogin(ID,65535,function(){
 		T.Load( './parts/index/energyExindex.html', "#energyExindex", function() {
-			T.MyGet('/nets-budget/api/org/org_tree_data_query_auth',function(projectID){
+			T.MyGet('api/org_tree_data_query_auth.json',function(projectID){
 			document.getElementById("entryBody").style.display="block"
 			T.AllData.unitId = {
 				id: projectID.data[0].id
@@ -16,7 +16,8 @@
 				id: T.LoginInfo.userId
 			}
 			T.AllData.orgUnitLevel = {
-				leve: projectID.data[0].orgUnitLevel
+				// leve: projectID.data[0].orgUnitLevel
+				leve: 1
 			}
 			T.AllData.meterType = {
 				merterType: ''
@@ -42,7 +43,7 @@
 			exIndexData.JsonCache = {};
 			exIndexData.classType = 'all';
 			var indexCharts = {};
-			T.MyGet( '/nets-platform-energy-api/payment_analyze/month_payment', function( d ) {
+			T.MyGet( 'api/month_payment.json', function( d ) {
 				exIndexData.JsonCache = d;
 				createEcharts( 'all' );
 			}, {
@@ -262,7 +263,7 @@
 								T.AllData.nowProjectName.name = e.name
 								T.AllData.unitId.id = e.id;
 								T.AllData.orgUnitLevel = {leve:e.orgUnitLevel};
-								T.MyGet( '/nets-platform-energy-api/payment_analyze/month_payment', function( d ) {
+								T.MyGet( 'api/month_payment.json', function( d ) {
 									exIndexData.JsonCache = d;
 									createEcharts( exIndexData.classType );
 								}, {
@@ -321,7 +322,7 @@
 				watch: {
 					unitId: {
 						handler: function() {
-							T.MyGet( '/nets-platform-energy-api/payment_analyze/month_payment', function( d ) {
+							T.MyGet( 'api/month_payment.json', function( d ) {
 								exIndexData.JsonCache = d;
 								createEcharts( exIndexData.classType );
 							}, {

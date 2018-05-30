@@ -1,0 +1,104 @@
+{
+	"data":{
+		"orgLevel":3,
+		"nowMonth":{
+			"all":[],
+			"undertaketype_1":[],
+			"undertaketype_2":[],
+			"undertaketype_3":[],
+			"info":{
+				"all":{
+					"compareToLast":null,
+					"level":null,
+					"time":"2018-05-30 15:26:38",
+					"totalPay":0.000,
+					"totalPredict":0.000,
+					"undertakeType":"",
+					"undertakeTypeCode":"all",
+					"usePersent":0.0000
+				},
+				"undertaketype_1":{
+					"compareToLast":null,
+					"level":null,
+					"time":"2018-05-30 15:26:38",
+					"totalPay":0.000,
+					"totalPredict":0.000,
+					"undertakeType":"",
+					"undertakeTypeCode":"undertaketype_1",
+					"usePersent":0.0000
+				},
+				"undertaketype_2":{
+					"compareToLast":null,
+					"level":null,
+					"time":"2018-05-30 15:26:38",
+					"totalPay":0.000,
+					"totalPredict":0.000,
+					"undertakeType":"",
+					"undertakeTypeCode":"undertaketype_2",
+					"usePersent":0.0000
+				},
+				"undertaketype_3":{
+					"compareToLast":null,
+					"level":null,
+					"time":"2018-05-30 15:26:38",
+					"totalPay":0.000,
+					"totalPredict":0.000,
+					"undertakeType":"",
+					"undertakeTypeCode":"undertaketype_3",
+					"usePersent":0.0000
+				}
+			}
+		},
+		"nowYear":{
+			"all":[],
+			"undertaketype_1":[],
+			"undertaketype_2":[],
+			"undertaketype_3":[],
+			"info":{
+				"all":{
+					"compareToLast":null,
+					"level":null,
+					"time":"2018-05-30 15:26:38",
+					"totalPay":0.000,
+					"totalPredict":0.000,
+					"undertakeType":"",
+					"undertakeTypeCode":"all",
+					"usePersent":0.0000
+				},
+				"undertaketype_1":{
+					"compareToLast":null,
+					"level":null,
+					"time":"2018-05-30 15:26:38",
+					"totalPay":0.000,
+					"totalPredict":0.000,
+					"undertakeType":"",
+					"undertakeTypeCode":"undertaketype_1",
+					"usePersent":0.0000
+				},
+				"undertaketype_2":{
+					"compareToLast":null,
+					"level":null,
+					"time":"2018-05-30 15:26:38",
+					"totalPay":0.000,
+					"totalPredict":0.000,
+					"undertakeType":"",
+					"undertakeTypeCode":"undertaketype_2",
+					"usePersent":0.0000
+				},
+				"undertaketype_3":{
+					"compareToLast":null,
+					"level":null,
+					"time":"2018-05-30 15:26:38",
+					"totalPay":0.000,
+					"totalPredict":0.000,
+					"undertakeType":"",
+					"undertakeTypeCode":"undertaketype_3",
+					"usePersent":0.0000
+				}
+			}
+		}
+	},
+	"isSuccess":true,
+	"message":"",
+	"status":0
+}

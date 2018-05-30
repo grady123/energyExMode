@@ -143,7 +143,7 @@
             getData:function(){
 
                 var that = this._data;
-                T.MyGet('/nets-platform-energy-api/dosage_analyze/dosage_by_meter_id',function(res){
+                T.MyGet('api/dosage_by_meter_id.json',function(res){
                     if(res.status==0){
 
 

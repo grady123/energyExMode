@@ -50,7 +50,7 @@
 			if ( exClassData.tableType == 'unity' ) {
 				if ( exClassData.orgLevel.leve != 4 ) {
 					if ( typeof( exClassData.JsonCacheUnity ) == 'undefined') {
-						T.MyGet( '/nets-platform-energy-api/payment_analyze/org_payment', function( d ) {
+						T.MyGet( 'api/org_payment.json', function( d ) {
 							exClassData.JsonCacheUnity = d;
 							eneryClassCharts.getDom().style.height = exClassData.echartBaseHeigh + ( exClassData.ecGridPading * 12 ) + 'px';
 				      eneryClassCharts.resize( {
@@ -81,7 +81,7 @@
 			} else
 			if ( exClassData.tableType == 'month' ) {
 				if ( typeof( exClassData.JsonCacheMonth ) == 'undefined') {
-					T.MyGet( '/nets-platform-energy-api/payment_analyze/month_payment', function( d ) {
+					T.MyGet( 'api/month_payment.json', function( d ) {
 						exClassData.JsonCacheMonth = d;
 
 						setInfoData();
@@ -99,7 +99,7 @@
 			} else
 			if ( exClassData.tableType == 'type' ) {
 				if ( typeof( exClassData.JsonCacheType ) == 'undefined') {
-					T.MyGet( '/nets-platform-energy-api/payment_analyze/business_payment', function( d ) {
+					T.MyGet( 'api/business_payment.json', function( d ) {
 						exClassData.JsonCacheType = d;
 						setInfoData();
 						// echaart更新

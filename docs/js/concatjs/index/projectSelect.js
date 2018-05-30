@@ -7,7 +7,7 @@
         all_data.userId = Id;
         all_data.nowProject = nowName;
         // T.MyGet('/nets-platform-uum-api/api/user/get_user_project_tree', getData, {
-        T.MyGet('/nets-budget/api/org/org_tree_data_query_auth', getData, {
+        T.MyGet('api/org_tree_data_query_auth.json', getData, {
             userId: all_data.userId
         });
 
